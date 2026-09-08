@@ -1,0 +1,378 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
+
+  --color-bg: #0c0b0a;
+  --color-elevated: #141210;
+  --color-surface: #1a1714;
+  --color-surface-2: #221e1a;
+  --color-fg: #f3ece4;
+  --color-muted: #a89a8c;
+  --color-subtle: #7a6e63;
+  --color-border: #3a342e;
+  --color-accent: #d8cbb8;
+  --color-accent-fg: #0c0b0a;
+  --color-good: #8aa37f;
+  --color-warn: #c4a574;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.75rem;
+
+  --shadow-soft: 0 18px 40px -24px rgb(0 0 0 / 0.65);
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    min-height: 100dvh;
+    min-height: 100svh;
+    overflow-x: clip;
+  }
+
+  a,
+  button,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-step-lead,
+  .anim-step-rear,
+  .anim-side-left-first,
+  .anim-side-left-second,
+  .anim-side-right-first,
+  .anim-side-right-second,
+  .anim-pivot-cw,
+  .anim-pivot-ccw,
+  .anim-dash,
+  .anim-slip,
+  .anim-roll,
+  .anim-punch,
+  .anim-punch-up {
+    animation: none !important;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+.rope-line {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 4px,
+    color-mix(in oklab, var(--color-accent) 28%, transparent) 4px,
+    color-mix(in oklab, var(--color-accent) 28%, transparent) 5px,
+    transparent 5px,
+    transparent 10px,
+    color-mix(in oklab, var(--color-accent) 16%, transparent) 10px,
+    color-mix(in oklab, var(--color-accent) 16%, transparent) 11px,
+    transparent 11px
+  );
+}
+
+@keyframes step-lead {
+  0%,
+  18% {
+    transform: translateY(0);
+  }
+  38%,
+  58% {
+    transform: translateY(-26px);
+  }
+  82%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes step-rear {
+  0%,
+  42% {
+    transform: translateY(0);
+  }
+  62%,
+  80% {
+    transform: translateY(-26px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes side-left-first {
+  0%,
+  18% {
+    transform: translateX(0);
+  }
+  38%,
+  58% {
+    transform: translateX(-20px);
+  }
+  82%,
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes side-left-second {
+  0%,
+  42% {
+    transform: translateX(0);
+  }
+  62%,
+  80% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes side-right-first {
+  0%,
+  18% {
+    transform: translateX(0);
+  }
+  38%,
+  58% {
+    transform: translateX(20px);
+  }
+  82%,
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes side-right-second {
+  0%,
+  42% {
+    transform: translateX(0);
+  }
+  62%,
+  80% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pivot-cw {
+  0%,
+  20% {
+    transform: rotate(0deg);
+  }
+  50%,
+  70% {
+    transform: rotate(50deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pivot-ccw {
+  0%,
+  20% {
+    transform: rotate(0deg);
+  }
+  50%,
+  70% {
+    transform: rotate(-50deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes slip-head {
+  0%,
+  15% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(-14px);
+  }
+  55% {
+    transform: translateX(0);
+  }
+  80% {
+    transform: translateX(14px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes roll-body {
+  0%,
+  12% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(-10px, 10px);
+  }
+  50% {
+    transform: translate(0, 14px);
+  }
+  70% {
+    transform: translate(10px, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes punch-extend {
+  0%,
+  20% {
+    transform: scaleX(0.15);
+    opacity: 0.35;
+  }
+  45%,
+  58% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  80%,
+  100% {
+    transform: scaleX(0.15);
+    opacity: 0.35;
+  }
+}
+
+.anim-step-lead {
+  animation: step-lead 2.4s var(--ease, cubic-bezier(0.22, 1, 0.36, 1)) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.anim-step-rear {
+  animation: step-rear 2.4s var(--ease, cubic-bezier(0.22, 1, 0.36, 1)) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.anim-side-left-first {
+  animation: side-left-first 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.anim-side-left-second {
+  animation: side-left-second 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.anim-side-right-first {
+  animation: side-right-first 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.anim-side-right-second {
+  animation: side-right-second 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.anim-pivot {
+  transform-box: view-box;
+}
+
+.anim-pivot-cw {
+  animation: pivot-cw 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.anim-pivot-ccw {
+  animation: pivot-ccw 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.anim-slip {
+  animation: slip-head 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.anim-roll {
+  animation: roll-body 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.anim-dash {
+  stroke-dasharray: 6 6;
+  animation: dash-flow 1s linear infinite;
+}
+
+.anim-punch {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: punch-extend 2.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes punch-rise {
+  0%,
+  20% {
+    transform: scaleY(0.2);
+    opacity: 0.35;
+  }
+  45%,
+  58% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  80%,
+  100% {
+    transform: scaleY(0.2);
+    opacity: 0.35;
+  }
+}
+
+.anim-punch-up {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: punch-rise 2.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
