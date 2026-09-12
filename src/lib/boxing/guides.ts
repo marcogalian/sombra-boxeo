@@ -1,0 +1,281 @@
+import type { ModuleId } from "./types";
+
+export type VideoSectionId = ModuleId | "rapidez" | "forma";
+
+export const VIDEO_SECTIONS: {
+  id: VideoSectionId;
+  label: string;
+  description: string;
+}[] = [
+  { id: "guardia", label: "Guardia", description: "Base y equilibrio" },
+  { id: "piernas", label: "Piernas", description: "Entrar, salir y pivotar" },
+  { id: "golpes", label: "Golpes", description: "Del jab al uppercut" },
+  { id: "defensa", label: "Esquivas", description: "Ver, defender y salir" },
+  { id: "rapidez", label: "Rapidez", description: "Ritmo y coordinación" },
+  { id: "forma", label: "En forma", description: "Resistencia de boxeador" },
+];
+
+export const FEATURED_GUIDES: {
+  id: string;
+  section: VideoSectionId;
+  title: string;
+  detail: string;
+  image: string;
+  lessonId?: string;
+  workoutId?: string;
+}[] = [
+  {
+    id: "guardia-base",
+    section: "guardia",
+    title: "Montar la guardia",
+    detail: "Pies, manos y mentón",
+    image: "/images/stance.jpg",
+    lessonId: "postura",
+  },
+  {
+    id: "paso-arrastre",
+    section: "piernas",
+    title: "Paso y arrastre",
+    detail: "Muévete sin cruzar los pies",
+    image: "/images/feet.jpg",
+    lessonId: "paso-arrastre",
+  },
+  {
+    id: "pivote",
+    section: "piernas",
+    title: "Pivote y salida",
+    detail: "Cambia el ángulo sin perder base",
+    image: "/images/feet.jpg",
+    lessonId: "pivote",
+  },
+  {
+    id: "jab",
+    section: "golpes",
+    title: "Jab limpio",
+    detail: "Sale y vuelve a la guardia",
+    image: "/images/jab.jpg",
+    lessonId: "jab",
+  },
+  {
+    id: "recto",
+    section: "golpes",
+    title: "Recto con cadera",
+    detail: "Pie, cadera y mano conectados",
+    image: "/images/cross.jpg",
+    lessonId: "cross",
+  },
+  {
+    id: "ganchos",
+    section: "golpes",
+    title: "Gancho compacto",
+    detail: "Gira sin abrir el brazo",
+    image: "/images/hook.jpg",
+    lessonId: "ganchos",
+  },
+  {
+    id: "slip",
+    section: "defensa",
+    title: "Esquiva lateral",
+    detail: "Saca la cabeza de la línea",
+    image: "/images/slip.jpg",
+    lessonId: "slip",
+  },
+  {
+    id: "roll",
+    section: "defensa",
+    title: "Pasar por debajo",
+    detail: "Piernas, guardia y salida",
+    image: "/images/slip.jpg",
+    lessonId: "roll",
+  },
+  {
+    id: "bloqueo",
+    section: "defensa",
+    title: "Bloqueo compacto",
+    detail: "Cubre sin cerrar los ojos",
+    image: "/images/block.jpg",
+    lessonId: "bloqueo",
+  },
+  {
+    id: "velocidad",
+    section: "rapidez",
+    title: "Manos rápidas, guardia alta",
+    detail: "Ráfagas cortas sin perder forma",
+    image: "/images/shadow.jpg",
+    workoutId: "rapidez-tecnica",
+  },
+  {
+    id: "pies-rapidos",
+    section: "rapidez",
+    title: "Pies rápidos",
+    detail: "Cambios de ritmo y dirección",
+    image: "/images/feet.jpg",
+    workoutId: "pies-jab",
+  },
+  {
+    id: "condicion",
+    section: "forma",
+    title: "Condición de boxeador",
+    detail: "Cuerda, piernas, hombros y core",
+    image: "/images/jumprope.jpg",
+    workoutId: "condicion",
+  },
+  {
+    id: "sombra",
+    section: "forma",
+    title: "Rounds de sombra",
+    detail: "Resistencia mientras boxeas",
+    image: "/images/shadow.jpg",
+    workoutId: "sombra-libre",
+  },
+];
+
+export type InstagramReel = {
+  id: string;
+  sections: VideoSectionId[];
+  title: string;
+  summary: string;
+  watchFor: string;
+  practice: string;
+  creator: string;
+  level: "Base" | "Intermedio";
+  url: string;
+  image: string;
+};
+
+export const INSTAGRAM_REELS: InstagramReel[] = [
+  {
+    id: "frank-jab",
+    sections: ["guardia", "golpes"],
+    title: "Un jab recto que vuelve a casa",
+    summary: "El hombro acompaña el golpe y la mano regresa enseguida al mentón.",
+    watchFor: "Hombro detrás del puño, brazo relajado y vuelta por la misma línea.",
+    practice: "3 series de 10 jabs lentos delante de un espejo.",
+    creator: "@franksnobleart",
+    level: "Base",
+    url: "https://www.instagram.com/franksnobleart/reel/Daxl27sNiEZ/",
+    image: "/images/jab.jpg",
+  },
+  {
+    id: "frank-cross",
+    sections: ["golpes"],
+    title: "El recto nace en el suelo",
+    summary: "Una demostración clara de cómo unir pie, cadera, cuerpo y hombro.",
+    watchFor: "El pie trasero gira antes de que el hombro termine de cruzar.",
+    practice: "2 minutos de rectos al 50 %, frenando en equilibrio.",
+    creator: "@franksnobleart",
+    level: "Base",
+    url: "https://www.instagram.com/franksnobleart/reel/DZDkCHlufdN/",
+    image: "/images/cross.jpg",
+  },
+  {
+    id: "mustyy-footwork",
+    sections: ["piernas", "rapidez"],
+    title: "Cuatro formas de crear ángulos",
+    summary: "V-step, Z-step, paso diamante y cambio de guardia para moverte con intención.",
+    watchFor: "Base estable y pasos cortos; domina primero el paso y arrastre.",
+    practice: "Escoge un solo patrón y repítelo 60 segundos por lado.",
+    creator: "@mustyyboxing",
+    level: "Intermedio",
+    url: "https://www.instagram.com/reel/DaWxNqiIRb0/",
+    image: "/images/feet.jpg",
+  },
+  {
+    id: "ryan-defensive-exits",
+    sections: ["defensa", "piernas"],
+    title: "Salir después de golpear",
+    summary: "Cuatro salidas para no quedarse quieto esperando el contraataque.",
+    watchFor: "La defensa empieza al terminar la combinación, sin perder la base.",
+    practice: "Jab, slip y paso lateral: 5 repeticiones muy lentas por lado.",
+    creator: "@ryanhennesseyboxing",
+    level: "Intermedio",
+    url: "https://www.instagram.com/reel/Dc6ut8SMFOE/",
+    image: "/images/slip.jpg",
+  },
+  {
+    id: "tony-feints",
+    sections: ["defensa", "guardia"],
+    title: "Una finta que parezca real",
+    summary: "Tony Jeffries muestra por qué la finta debe empezar igual que un golpe auténtico.",
+    watchFor: "Ojos, hombros y pies venden la intención antes de cortar el movimiento.",
+    practice: "Alterna jab real y finta durante un round de sombra suave.",
+    creator: "@tony_jeffries",
+    level: "Intermedio",
+    url: "https://www.instagram.com/reel/DBWhUwYKUFf/",
+    image: "/images/shadow.jpg",
+  },
+  {
+    id: "tony-fast-hands",
+    sections: ["rapidez"],
+    title: "Velocidad desde la relajación",
+    summary: "Una prueba visual de cómo la tensión innecesaria frena las combinaciones.",
+    watchFor: "Hombros sueltos entre golpes y aceleración solo al final.",
+    practice: "5 ráfagas de 10 segundos al aire, descansando 20 segundos.",
+    creator: "@tony_jeffries",
+    level: "Base",
+    url: "https://www.instagram.com/reel/DBZJIXxM3-I/",
+    image: "/images/shadow.jpg",
+  },
+  {
+    id: "frank-heavy-bag",
+    sections: ["forma"],
+    title: "Ponerse en forma con el saco",
+    summary: "Un boxeador veterano explica cómo el saco une cardio, equilibrio y coordinación.",
+    watchFor: "Mantén técnica y movimiento de pies cuando empiece a faltar el aire.",
+    practice: "3 rounds de 2 minutos, suaves y continuos, con 1 minuto de pausa.",
+    creator: "@franksnobleart",
+    level: "Base",
+    url: "https://www.instagram.com/franksnobleart/reel/Da49dT7Nje4/",
+    image: "/images/shadow.jpg",
+  },
+];
+
+const DEMO_BY_LESSON: Record<string, string> = {
+  "para-que": "/videos/shadow.mp4",
+  espacio: "/videos/jumprope.mp4",
+  postura: "/videos/stance.mp4",
+  manos: "/videos/block.mp4",
+  equilibrio: "/videos/stance.mp4",
+  "paso-arrastre": "/videos/stance.mp4",
+  "adelante-atras": "/videos/stance.mp4",
+  laterales: "/videos/stance.mp4",
+  pivote: "/videos/stance.mp4",
+  jab: "/videos/jab.mp4",
+  cross: "/videos/cross.mp4",
+  ganchos: "/videos/hook.mp4",
+  uppercut: "/videos/hook.mp4",
+  "uno-dos": "/videos/cross.mp4",
+  "tres-golpes": "/videos/hook.mp4",
+  bloqueo: "/videos/block.mp4",
+  slip: "/videos/slip.mp4",
+  parry: "/videos/block.mp4",
+  roll: "/videos/slip.mp4",
+  "sombra-rounds": "/videos/shadow.mp4",
+};
+
+export function demoForLesson(id: string) {
+  return DEMO_BY_LESSON[id];
+}
+
+export const PRACTICE_BY_LESSON: Record<string, string> = {
+  "para-que": "primer-dia",
+  espacio: "primer-dia",
+  postura: "primer-dia",
+  manos: "primer-dia",
+  equilibrio: "diario",
+  "paso-arrastre": "pies-jab",
+  "adelante-atras": "pies-jab",
+  laterales: "pies-jab",
+  pivote: "pies-jab",
+  jab: "pies-jab",
+  cross: "diario",
+  ganchos: "combinaciones",
+  uppercut: "combinaciones",
+  "uno-dos": "diario",
+  "tres-golpes": "combinaciones",
+  bloqueo: "defensa-mov",
+  slip: "defensa-mov",
+  parry: "defensa-mov",
+  roll: "defensa-mov",
+  "sombra-rounds": "sombra-libre",
+};

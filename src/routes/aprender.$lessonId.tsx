@@ -1,7 +1,8 @@
 import { createFileRoute, Link, Navigate } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Dumbbell } from "lucide-react";
 import { PunchLegend, TechniqueDiagram } from "@/components/boxing/diagrams";
-import { LessonMedia, YoutubeRef } from "@/components/boxing/media";
+import { LessonCoach } from "@/components/boxing/lesson-coach";
+import { LessonMedia } from "@/components/boxing/media";
 import { Button } from "@/components/ui/button";
 import {
   LESSON_BY_ID,
@@ -9,6 +10,7 @@ import {
   prevLesson,
 } from "@/lib/boxing/curriculum";
 import { useBoxingStore } from "@/lib/boxing/store";
+import { PRACTICE_BY_LESSON } from "@/lib/boxing/guides";
 
 export const Route = createFileRoute("/aprender/$lessonId")({
   component: LessonPage,
@@ -28,6 +30,7 @@ function LessonPage() {
   const next = nextLesson(lesson.id);
   const prev = prevLesson(lesson.id);
   const hasDiagram = lesson.diagram !== "none";
+  const practiceId = PRACTICE_BY_LESSON[lesson.id];
 
   return (
     <main className="pb-8">
@@ -55,6 +58,17 @@ function LessonPage() {
             Guardia zurda activa: el 1 sigue siendo el jab (ahora con la
             derecha). Los dibujos de pies ya están espejados.
           </p>
+        ) : null}
+
+        <LessonCoach lesson={lesson} />
+
+        {practiceId ? (
+          <Button asChild size="lg" className="min-h-14 w-full">
+            <Link to="/entrenar/$workoutId" params={{ workoutId: practiceId }}>
+              <Dumbbell className="size-5" />
+              Practicar ahora
+            </Link>
+          </Button>
         ) : null}
 
         {hasDiagram ? (
@@ -151,15 +165,7 @@ function LessonPage() {
           <p className="mt-2 text-sm leading-relaxed text-muted">{lesson.drill.body}</p>
         </section>
 
-        {lesson.youtubeId ? (
-          <YoutubeRef
-            id={lesson.youtubeId}
-            title={lesson.youtubeTitle ?? "Demo"}
-            start={lesson.youtubeStart}
-          />
-        ) : null}
-
-        {hasDiagram ? (
+        {hasDiagram && !lesson.video ? (
           <LessonMedia
             image={lesson.image}
             video={lesson.video}

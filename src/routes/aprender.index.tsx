@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check } from "lucide-react";
+import { VideoLibrary } from "@/components/boxing/video-library";
 import { LESSONS, MODULES, lessonsFor } from "@/lib/boxing/curriculum";
 import { useBoxingStore } from "@/lib/boxing/store";
 
@@ -21,6 +22,8 @@ function Escuela() {
       <p className="mt-4 text-sm text-accent">
         {done} de {LESSONS.length} hechas
       </p>
+
+      <VideoLibrary />
 
       <div className="mt-8 space-y-10">
         {MODULES.map((mod) => {

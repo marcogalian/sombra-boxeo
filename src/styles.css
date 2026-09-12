@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Outfit", "Segoe UI", system-ui, sans-serif;
-  --font-display: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
+  --font-sans: "Aptos", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Bahnschrift Condensed", "Arial Narrow", Impact, sans-serif;
 
   --color-bg: #0c0b0a;
   --color-elevated: #141210;

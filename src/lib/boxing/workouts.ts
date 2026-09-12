@@ -307,6 +307,77 @@ export const WORKOUTS: Workout[] = [
     ],
   },
   {
+    id: "rapidez-tecnica",
+    title: "Rapidez con técnica",
+    durationMin: 12,
+    level: "base",
+    focus: "Pies ligeros, ráfagas y vuelta a guardia",
+    image: "/images/shadow.jpg",
+    video: "/videos/shadow.mp4",
+    equipment: ["Espacio libre"],
+    afterLesson: "uno-dos",
+    blocks: [
+      {
+        kind: "prep",
+        title: "Activar",
+        seconds: 60,
+        notes: [
+          "Marcha rápida y hombros sueltos",
+          "No busques velocidad en frío",
+        ],
+      },
+      {
+        kind: "drill",
+        title: "Pies rápidos",
+        seconds: 90,
+        notes: [
+          "Dos pasos cortos adelante y dos atrás",
+          "Los pies no se cruzan",
+          "La cabeza mantiene la misma altura",
+        ],
+      },
+      { kind: "rest", title: "Soltar", seconds: 30 },
+      {
+        kind: "round",
+        title: "Ráfagas limpias",
+        work: 45,
+        rest: 30,
+        rounds: 4,
+        script: [
+          "Cinco segundos rápidos, cinco segundos suaves",
+          "Solo jab o 1-2: primero limpio, luego rápido",
+          "Cada mano vuelve a la mejilla",
+        ],
+      },
+      { kind: "rest", title: "Respirar", seconds: 30 },
+      {
+        kind: "drill",
+        title: "Ver y responder",
+        seconds: 90,
+        notes: [
+          "Imagina una señal: slip, jab y salida",
+          "Cambia de dirección cada tres acciones",
+          "Los ojos siempre al frente",
+        ],
+      },
+      {
+        kind: "drill",
+        title: "Final con control",
+        seconds: 90,
+        notes: [
+          "Veinte segundos vivo, diez suave",
+          "Si se cae la guardia, reduce la velocidad",
+        ],
+      },
+      {
+        kind: "prep",
+        title: "Cerrar",
+        seconds: 60,
+        notes: ["Anda, suelta brazos y respira por la nariz"],
+      },
+    ],
+  },
+  {
     id: "condicion",
     title: "Condición de boxeador",
     durationMin: 13,
