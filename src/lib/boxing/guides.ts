@@ -131,6 +131,7 @@ export const FEATURED_GUIDES: {
 ];
 
 export type InstagramReel = {
+  video: string;
   id: string;
   sections: VideoSectionId[];
   title: string;
@@ -146,6 +147,7 @@ export type InstagramReel = {
 export const INSTAGRAM_REELS: InstagramReel[] = [
   {
     id: "frank-jab",
+    video: "/videos/coaches/frank-jab.mp4",
     sections: ["guardia", "golpes"],
     title: "Un jab recto que vuelve a casa",
     summary: "El hombro acompaña el golpe y la mano regresa enseguida al mentón.",
@@ -154,10 +156,11 @@ export const INSTAGRAM_REELS: InstagramReel[] = [
     creator: "@franksnobleart",
     level: "Base",
     url: "https://www.instagram.com/franksnobleart/reel/Daxl27sNiEZ/",
-    image: "/images/jab.jpg",
+    image: "/videos/coaches/frank-jab.jpg",
   },
   {
     id: "frank-cross",
+    video: "/videos/coaches/frank-cross.mp4",
     sections: ["golpes"],
     title: "El recto nace en el suelo",
     summary: "Una demostración clara de cómo unir pie, cadera, cuerpo y hombro.",
@@ -166,10 +169,11 @@ export const INSTAGRAM_REELS: InstagramReel[] = [
     creator: "@franksnobleart",
     level: "Base",
     url: "https://www.instagram.com/franksnobleart/reel/DZDkCHlufdN/",
-    image: "/images/cross.jpg",
+    image: "/videos/coaches/frank-cross.jpg",
   },
   {
     id: "mustyy-footwork",
+    video: "/videos/coaches/mustyy-footwork.mp4",
     sections: ["piernas", "rapidez"],
     title: "Cuatro formas de crear ángulos",
     summary: "V-step, Z-step, paso diamante y cambio de guardia para moverte con intención.",
@@ -178,10 +182,11 @@ export const INSTAGRAM_REELS: InstagramReel[] = [
     creator: "@mustyyboxing",
     level: "Intermedio",
     url: "https://www.instagram.com/reel/DaWxNqiIRb0/",
-    image: "/images/feet.jpg",
+    image: "/videos/coaches/mustyy-footwork.jpg",
   },
   {
     id: "ryan-defensive-exits",
+    video: "/videos/coaches/ryan-defensive-exits.mp4",
     sections: ["defensa", "piernas"],
     title: "Salir después de golpear",
     summary: "Cuatro salidas para no quedarse quieto esperando el contraataque.",
@@ -190,10 +195,11 @@ export const INSTAGRAM_REELS: InstagramReel[] = [
     creator: "@ryanhennesseyboxing",
     level: "Intermedio",
     url: "https://www.instagram.com/reel/Dc6ut8SMFOE/",
-    image: "/images/slip.jpg",
+    image: "/videos/coaches/ryan-defensive-exits.jpg",
   },
   {
     id: "tony-feints",
+    video: "/videos/coaches/tony-feints.mp4",
     sections: ["defensa", "guardia"],
     title: "Una finta que parezca real",
     summary: "Tony Jeffries muestra por qué la finta debe empezar igual que un golpe auténtico.",
@@ -202,10 +208,11 @@ export const INSTAGRAM_REELS: InstagramReel[] = [
     creator: "@tony_jeffries",
     level: "Intermedio",
     url: "https://www.instagram.com/reel/DBWhUwYKUFf/",
-    image: "/images/shadow.jpg",
+    image: "/videos/coaches/tony-feints.jpg",
   },
   {
     id: "tony-fast-hands",
+    video: "/videos/coaches/tony-fast-hands.mp4",
     sections: ["rapidez"],
     title: "Velocidad desde la relajación",
     summary: "Una prueba visual de cómo la tensión innecesaria frena las combinaciones.",
@@ -214,10 +221,11 @@ export const INSTAGRAM_REELS: InstagramReel[] = [
     creator: "@tony_jeffries",
     level: "Base",
     url: "https://www.instagram.com/reel/DBZJIXxM3-I/",
-    image: "/images/shadow.jpg",
+    image: "/videos/coaches/tony-fast-hands.jpg",
   },
   {
     id: "frank-heavy-bag",
+    video: "/videos/coaches/frank-heavy-bag.mp4",
     sections: ["forma"],
     title: "Ponerse en forma con el saco",
     summary: "Un boxeador veterano explica cómo el saco une cardio, equilibrio y coordinación.",
@@ -226,7 +234,7 @@ export const INSTAGRAM_REELS: InstagramReel[] = [
     creator: "@franksnobleart",
     level: "Base",
     url: "https://www.instagram.com/franksnobleart/reel/Da49dT7Nje4/",
-    image: "/images/shadow.jpg",
+    image: "/videos/coaches/frank-heavy-bag.jpg",
   },
 ];
 

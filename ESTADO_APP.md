@@ -10,8 +10,9 @@ La aplicación está lista para probar. Está orientada a móvil y permite apren
 
 - Escuela ordenada de 20 lecciones, desde postura y guardia hasta combinaciones, defensa y rounds de sombra.
 - Videoteca filtrable por Guardia, Piernas, Golpes, Esquivas, Rapidez y En forma.
-- Siete Reels reales de Instagram reproducibles dentro de la videoteca, colocados antes de las guías antiguas.
-- Acceso destacado **“NUEVO · 7 REELS”** en la pantalla de inicio.
+- Siete clips descargados en `public/videos/coaches/`, servidos por la app y con crédito visible al autor. Sin reproductores ni conexiones a Instagram para verlos.
+- Controles de pausa, avance, reinicio, repetición automática y velocidades 0,5× / 0,75× / 1×.
+- Portadas extraídas de los vídeos originales y acceso **“Mira, pausa y practica”** en Inicio.
 - Demostraciones visuales y explicaciones dentro de las lecciones.
 - Ejercicios relacionados para pasar directamente de aprender a practicar.
 - Entrenamiento específico de rapidez técnica.
@@ -20,7 +21,7 @@ La aplicación está lista para probar. Está orientada a móvil y permite apren
 
 ## Reels de Instagram seleccionados
 
-Los vídeos se reproducen dentro de la aplicación y también incluyen un enlace a la publicación original del entrenador. Cada tarjeta indica el nivel, qué observar y cómo practicarlo.
+Los siete MP4 completos (720×1280, H.264/AAC) y sus portadas están incluidos en el proyecto. Se reproducen con controles nativos, sin entrar en Instagram. La atribución conserva el autor y un enlace opcional a su publicación. Cada tarjeta indica el nivel, qué observar y cómo practicarlo.
 
 1. Jab y regreso a la guardia — @franksnobleart  
    https://www.instagram.com/franksnobleart/reel/Daxl27sNiEZ/
@@ -45,6 +46,7 @@ Los vídeos se reproducen dentro de la aplicación y también incluyen un enlace
 - Sin desbordamiento horizontal en móvil.
 - Filtros de la videoteca comprobados.
 - Autores, descripciones, reproductores integrados y enlaces originales de los Reels comprobados.
+- Prueba automática de los siete clips a 390 y 1280 píxeles: reproducción real, reinicio, cámara lenta, repetición al final y cero peticiones a Instagram. Se usa Playwright porque `agent-browser` no está disponible en este equipo.
 - Tarjeta para compartir e icono de la aplicación presentes.
 
 El entorno de revisión bloquea el script externo de la vista previa de la plataforma. No se encontraron errores propios de la aplicación.
@@ -52,7 +54,7 @@ El entorno de revisión bloquea el script externo de la vista previa de la plata
 ## Prueba recomendada para mañana
 
 1. Abrir **Escuela → Videoteca** y cambiar entre las seis categorías.
-2. Abrir al menos un Reel de cada categoría y comprobar que Instagram muestra la publicación correcta.
+2. Reproducir un clip de cada categoría; probar cámara lenta, repetición y reinicio sin salir de la app.
 3. Entrar en una lección y alternar entre demostración y explicación.
 4. Iniciar el entrenamiento de rapidez, pausar y continuar el cronómetro.
 5. Revisar el plan de seis semanas.

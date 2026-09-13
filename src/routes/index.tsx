@@ -58,9 +58,13 @@ function Home() {
             <Instagram className="size-6" />
           </span>
           <span className="min-w-0 flex-1">
-            <span className="text-xs font-semibold tracking-[0.16em]">NUEVO · 7 REELS</span>
-            <span className="mt-1 block text-base font-semibold">Vídeos cortos de Instagram</span>
-            <span className="mt-1 block text-sm opacity-80">Pies, esquivas, golpes y rapidez</span>
+            <span className="text-xs font-semibold tracking-[0.16em]">
+              7 CLIPS · REPITE A TU RITMO
+            </span>
+            <span className="mt-1 block text-base font-semibold">Mira, pausa y practica</span>
+            <span className="mt-1 block text-sm opacity-80">
+              Vídeos en la app · Cámara lenta · Repetición
+            </span>
           </span>
           <ArrowRight className="size-5 shrink-0" />
         </Link>

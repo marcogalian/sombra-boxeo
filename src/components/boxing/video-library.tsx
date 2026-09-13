@@ -8,10 +8,7 @@ import {
   type VideoSectionId,
 } from "@/lib/boxing/guides";
 import { cn } from "@/lib/utils";
-
-function instagramEmbedUrl(url: string) {
-  return `${url.replace(/\/$/, "")}/embed/`;
-}
+import { CoachVideo } from "./coach-video";
 
 export function VideoLibrary() {
   const [section, setSection] = useState<VideoSectionId>("piernas");
@@ -27,7 +24,7 @@ export function VideoLibrary() {
           <h2 className="mt-1 font-display text-3xl leading-none">Aprende mirando</h2>
         </div>
         <span className="text-right text-xs tabular-nums text-subtle">
-          {INSTAGRAM_REELS.length} Reels · {FEATURED_GUIDES.length} guías
+          {INSTAGRAM_REELS.length} clips · {FEATURED_GUIDES.length} guías
         </span>
       </div>
       <p className="mt-2 text-sm leading-relaxed text-muted">
@@ -61,7 +58,7 @@ export function VideoLibrary() {
         <div>
           <div className="flex items-center gap-2 text-accent">
             <Instagram className="size-4" />
-            <p className="text-xs tracking-[0.16em]">VÍDEOS CORTOS DE INSTAGRAM</p>
+            <p className="text-xs tracking-[0.16em]">CLIPS PARA PRACTICAR</p>
           </div>
           <h3 className="mt-1 font-display text-2xl leading-none">Mira y repite</h3>
         </div>
@@ -70,20 +67,21 @@ export function VideoLibrary() {
         </span>
       </div>
       <p className="mt-2 text-sm leading-relaxed text-muted">
-        Pulsa el vídeo para reproducirlo aquí. Desliza para ver el siguiente.
+        Mira a cámara lenta y repite las veces que quieras. Todo se reproduce aquí, sin entrar en
+        Instagram.
       </p>
 
-      <div className="-mx-5 mt-4 overflow-x-auto px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <div className="flex w-max snap-x snap-mandatory gap-4">
+      <div className="mt-4">
+        <div className="space-y-5">
           {reels.map((reel) => (
             <article
               key={reel.id}
-              className="w-[82vw] max-w-sm snap-center overflow-hidden rounded-2xl border border-border bg-surface"
+              className="overflow-hidden rounded-2xl border border-border bg-surface"
             >
               <div className="flex items-start justify-between gap-3 p-4">
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-medium text-accent">{reel.creator}</span>
+                    <span className="text-xs font-medium text-accent">Vídeo de {reel.creator}</span>
                     <span className="rounded-full bg-elevated px-2 py-0.5 text-[9px] font-semibold tracking-wide text-subtle">
                       {reel.level}
                     </span>
@@ -93,16 +91,7 @@ export function VideoLibrary() {
                 <Instagram className="mt-0.5 size-5 shrink-0 text-accent" />
               </div>
 
-              <div className="aspect-[9/16] overflow-hidden border-y border-border bg-black">
-                <iframe
-                  src={instagramEmbedUrl(reel.url)}
-                  title={`${reel.title} — ${reel.creator}`}
-                  loading="lazy"
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="size-full border-0 bg-white"
-                />
-              </div>
+              <CoachVideo reel={reel} />
 
               <div className="p-4">
                 <p className="text-xs leading-relaxed text-muted">{reel.summary}</p>
@@ -119,7 +108,7 @@ export function VideoLibrary() {
                   rel="noreferrer"
                   className="mt-3 flex min-h-11 items-center justify-between rounded-xl border border-border bg-elevated px-3 text-xs font-medium text-accent"
                 >
-                  Abrir Reel original
+                  Autor y publicación original
                   <ExternalLink className="size-4" />
                 </a>
               </div>
@@ -128,17 +117,12 @@ export function VideoLibrary() {
         </div>
       </div>
 
-      <p className="mt-1 text-[11px] leading-relaxed text-subtle">
-        Los reproductores pertenecen a Instagram y pueden pedir que inicies sesión. Siempre tienes
-        el enlace a la publicación original.
-      </p>
-
       <div className="mt-8 flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-subtle">
         <span>LECCIONES PASO A PASO</span>
         <span className="h-px flex-1 bg-border" />
       </div>
       <p className="mt-2 text-sm leading-relaxed text-muted">
-        Después del Reel, practica la misma habilidad con una guía de la app.
+        Después del clip, practica la misma habilidad con una guía de la app.
       </p>
       <div className="mt-3 grid grid-cols-2 gap-3">
         {guides.map((guide) => {
