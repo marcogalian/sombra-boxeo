@@ -3,7 +3,13 @@ import { Repeat2, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { InstagramReel } from "@/lib/boxing/guides";
 
-export function CoachVideo({ reel }: { reel: InstagramReel }) {
+export function CoachVideo({
+  reel,
+}: {
+  reel: Pick<InstagramReel, "video" | "image" | "title" | "creator"> & {
+    orientation?: "landscape";
+  };
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [repeat, setRepeat] = useState(true);
   const [speed, setSpeed] = useState(1);
@@ -33,7 +39,10 @@ export function CoachVideo({ reel }: { reel: InstagramReel }) {
             if (other !== event.currentTarget) other.pause();
           });
         }}
-        className="aspect-[9/16] max-h-[65svh] w-full border-y border-border bg-bg object-contain"
+        className={cn(
+          "max-h-[65svh] w-full border-y border-border bg-bg object-contain",
+          reel.orientation === "landscape" ? "aspect-video" : "aspect-[9/16]",
+        )}
       />
       {error && (
         <p role="alert" className="px-4 pt-3 text-sm text-muted">

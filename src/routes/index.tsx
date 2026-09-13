@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, CalendarDays, Instagram, Shield } from "lucide-react";
+import { ArrowRight, CalendarDays, Play, Shield } from "lucide-react";
 import { LESSONS, MODULES, firstUnseen } from "@/lib/boxing/curriculum";
 import { recommendedWorkoutId, WORKOUT_BY_ID } from "@/lib/boxing/workouts";
 import { streakFrom, useBoxingStore } from "@/lib/boxing/store";
@@ -51,17 +51,16 @@ function Home() {
 
         <Link
           to="/aprender"
-          hash="videoteca"
           className="flex items-center gap-4 rounded-2xl bg-accent p-4 text-accent-fg"
         >
           <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-accent-fg/12">
-            <Instagram className="size-6" />
+            <Play className="size-6" />
           </span>
           <span className="min-w-0 flex-1">
             <span className="text-xs font-semibold tracking-[0.16em]">
-              7 CLIPS · REPITE A TU RITMO
+              20 LECCIONES · VÍDEOS NUEVOS
             </span>
-            <span className="mt-1 block text-base font-semibold">Mira, pausa y practica</span>
+            <span className="mt-1 block text-base font-semibold">Aprende viendo la técnica</span>
             <span className="mt-1 block text-sm opacity-80">
               Vídeos en la app · Cámara lenta · Repetición
             </span>
@@ -170,8 +169,8 @@ function Home() {
         <section className="rounded-2xl border border-border bg-elevated p-4">
           <p className="text-[11px] tracking-[0.16em] text-subtle">TU GUARDIA</p>
           <p className="mt-2 text-sm text-muted">
-            Ortodoxa: pie izquierdo delante. Zurda: pie derecho delante. Los dibujos de pies se
-            invierten.
+            Ortodoxa: pie izquierdo delante. Zurda: pie derecho delante. Adapta las manos delantera
+            y trasera de cada demostración a tu guardia.
           </p>
           <div className="mt-3 grid grid-cols-2 gap-2">
             <button

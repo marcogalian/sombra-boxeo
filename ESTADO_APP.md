@@ -12,8 +12,12 @@ La aplicación está lista para probar. Está orientada a móvil y permite apren
 - Videoteca filtrable por Guardia, Piernas, Golpes, Esquivas, Rapidez y En forma.
 - Siete clips descargados en `public/videos/coaches/`, servidos por la app y con crédito visible al autor. Sin reproductores ni conexiones a Instagram para verlos.
 - Controles de pausa, avance, reinicio, repetición automática y velocidades 0,5× / 0,75× / 1×.
-- Portadas extraídas de los vídeos originales y acceso **“Mira, pausa y practica”** en Inicio.
-- Demostraciones visuales y explicaciones dentro de las lecciones.
+- Portadas extraídas de los vídeos originales y acceso **“20 lecciones · vídeos nuevos”** en Inicio.
+- Renovación de las 20 lecciones con 23 archivos de vídeo de entrenadores reales. Se eliminan los ocho MP4 antiguos y el reproductor de YouTube.
+- Jab, recto, ganchos, ambos uppercuts, pasos, pivote, bloqueo, slip, parry, roll, calentamiento y sombra con fragmentos propios de cada técnica.
+- Vídeos y portadas reales también en las tarjetas de las lecciones y entrenamientos.
+- Escuela muestra primero las lecciones; la videoteca conserva un acceso directo.
+- Fuentes, cortes y criterios de revisión documentados en `REVISION_VIDEOS.md`.
 - Ejercicios relacionados para pasar directamente de aprender a practicar.
 - Entrenamiento específico de rapidez técnica.
 - Plan progresivo de seis semanas con objetivos y sesiones semanales.
@@ -49,13 +53,15 @@ Los siete MP4 completos (720×1280, H.264/AAC) y sus portadas están incluidos e
 - Prueba automática de los siete clips a 390 y 1280 píxeles: reproducción real, reinicio, cámara lenta, repetición al final y cero peticiones a Instagram. Se usa Playwright porque `agent-browser` no está disponible en este equipo.
 - Tarjeta para compartir e icono de la aplicación presentes.
 
-El entorno de revisión bloquea el script externo de la vista previa de la plataforma. No se encontraron errores propios de la aplicación.
+La comprobación con acceso de red muestra la app sin errores de consola ni de ejecución en móvil y ordenador.
+
+Las 20 lecciones se prueban con `scripts/check-lesson-videos.mjs`: reproducción de los 23 archivos, velocidad, bucle, atribución, navegación entre lecciones y cero peticiones a reproductores externos.
 
 ## Prueba recomendada para mañana
 
 1. Abrir **Escuela → Videoteca** y cambiar entre las seis categorías.
 2. Reproducir un clip de cada categoría; probar cámara lenta, repetición y reinicio sin salir de la app.
-3. Entrar en una lección y alternar entre demostración y explicación.
+3. Abrir Jab — el 1 y comprobar el nuevo entrenador. Entrar también en Ganchos y Uppercut: cada una tiene dos demostraciones.
 4. Iniciar el entrenamiento de rapidez, pausar y continuar el cronómetro.
 5. Revisar el plan de seis semanas.
 6. Marcar una lección como terminada, recargar la aplicación y confirmar que el progreso permanece.

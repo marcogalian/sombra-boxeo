@@ -1,14 +1,9 @@
 import { createFileRoute, Link, Navigate } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check, Dumbbell } from "lucide-react";
-import { PunchLegend, TechniqueDiagram } from "@/components/boxing/diagrams";
+import { PunchLegend } from "@/components/boxing/diagrams";
 import { LessonCoach } from "@/components/boxing/lesson-coach";
-import { LessonMedia } from "@/components/boxing/media";
 import { Button } from "@/components/ui/button";
-import {
-  LESSON_BY_ID,
-  nextLesson,
-  prevLesson,
-} from "@/lib/boxing/curriculum";
+import { LESSON_BY_ID, nextLesson, prevLesson } from "@/lib/boxing/curriculum";
 import { useBoxingStore } from "@/lib/boxing/store";
 import { PRACTICE_BY_LESSON } from "@/lib/boxing/guides";
 
@@ -29,7 +24,6 @@ function LessonPage() {
   const done = completed.includes(lesson.id);
   const next = nextLesson(lesson.id);
   const prev = prevLesson(lesson.id);
-  const hasDiagram = lesson.diagram !== "none";
   const practiceId = PRACTICE_BY_LESSON[lesson.id];
 
   return (
@@ -44,9 +38,7 @@ function LessonPage() {
           <p className="text-xs tracking-[0.16em] text-subtle">
             {lesson.kicker} · {lesson.minutes} MIN
           </p>
-          <h1 className="text-balance font-display text-3xl leading-none">
-            {lesson.title}
-          </h1>
+          <h1 className="text-balance font-display text-3xl leading-none">{lesson.title}</h1>
         </div>
       </header>
 
@@ -55,8 +47,8 @@ function LessonPage() {
 
         {stance === "southpaw" ? (
           <p className="rounded-lg bg-surface px-3 py-2 text-xs leading-relaxed text-muted">
-            Guardia zurda activa: el 1 sigue siendo el jab (ahora con la
-            derecha). Los dibujos de pies ya están espejados.
+            Guardia zurda activa: el 1 sigue siendo el jab (ahora con la derecha). El entrenador
+            puede demostrar en ortodoxa: adapta mano delantera y trasera a tu guardia.
           </p>
         ) : null}
 
@@ -71,35 +63,13 @@ function LessonPage() {
           </Button>
         ) : null}
 
-        {hasDiagram ? (
-          <section>
-            <h2 className="text-xs tracking-[0.18em] text-subtle">
-              ESTO SE COPIA
-            </h2>
-            <p className="mt-2 text-xs leading-relaxed text-muted">
-              El dibujo es el modelo. Las fotos del gimnasio son ambiente: no
-              copies mentón alto, gancho abierto ni pies de frente.
-            </p>
-            <TechniqueDiagram
-              id={lesson.diagram}
-              stance={stance}
-              className="mt-3"
-            />
-          </section>
-        ) : (
-          <LessonMedia image={lesson.image} video={lesson.video} title={lesson.title} />
-        )}
-
         {lesson.module === "golpes" || lesson.module === "combos" ? (
           <section>
-            <h2 className="text-xs tracking-[0.18em] text-subtle">
-              LOS NÚMEROS
-            </h2>
+            <h2 className="text-xs tracking-[0.18em] text-subtle">LOS NÚMEROS</h2>
             <p className="mt-2 text-xs leading-relaxed text-muted">
-              Delante y atrás, no izquierda y derecha. El 1 es el jab (mano de
-              delante) también en zurda. En algunos gimnasios el 3 es siempre
-              el gancho izquierdo: aquí el 3 es el de delante, para que la
-              zurda no se rompa.
+              Delante y atrás, no izquierda y derecha. El 1 es el jab (mano de delante) también en
+              zurda. En algunos gimnasios el 3 es siempre el gancho izquierdo: aquí el 3 es el de
+              delante, para que la zurda no se rompa.
             </p>
             <div className="mt-3">
               <PunchLegend />
@@ -165,15 +135,6 @@ function LessonPage() {
           <p className="mt-2 text-sm leading-relaxed text-muted">{lesson.drill.body}</p>
         </section>
 
-        {hasDiagram && !lesson.video ? (
-          <LessonMedia
-            image={lesson.image}
-            video={lesson.video}
-            title={lesson.title}
-            scene
-          />
-        ) : null}
-
         <div className="flex flex-col gap-3">
           <Button
             size="lg"
@@ -202,11 +163,7 @@ function LessonPage() {
               <span />
             )}
             {next ? (
-              <Button
-                variant="outline"
-                asChild
-                onClick={() => setLastLesson(next.id)}
-              >
+              <Button variant="outline" asChild onClick={() => setLastLesson(next.id)}>
                 <Link to="/aprender/$lessonId" params={{ lessonId: next.id }}>
                   Siguiente
                   <ArrowRight className="size-4" />

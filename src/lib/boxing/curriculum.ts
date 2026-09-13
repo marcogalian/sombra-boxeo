@@ -1,3 +1,4 @@
+import { clipsForLesson } from "./lesson-videos.ts";
 import type { Lesson, ModuleInfo } from "./types";
 
 export const MODULES: ModuleInfo[] = [
@@ -45,7 +46,7 @@ export const MODULES: ModuleInfo[] = [
   },
 ];
 
-export const LESSONS: Lesson[] = [
+const LESSON_CONTENT: Lesson[] = [
   {
     id: "para-que",
     module: "inicio",
@@ -77,7 +78,7 @@ export const LESSONS: Lesson[] = [
       "Si te falta el aire, paras. El ego no entrena.",
       "Todo se hace con las manos altas, incluso los descansos entre golpes.",
       "Duele una articulación: paras. Arde el músculo: puedes seguir un poco.",
-      "Los vídeos de entrenador están en español. Si un clip y los pasos no coinciden, mandan los pasos y el dibujo.",
+      "Cada demostración indica su autor e idioma. Mira el gesto completo, practica despacio y vuelve al vídeo para comprobarlo.",
     ],
     mistakes: [
       {
@@ -103,7 +104,6 @@ export const LESSONS: Lesson[] = [
     minutes: 8,
     level: "base",
     image: "/images/warmup.jpg",
-    video: "/videos/jumprope.mp4",
     diagram: "none",
     summary:
       "Dos metros libres a cada lado, suelo que no resbale, y diez minutos de calor antes de cualquier golpe.",
@@ -151,9 +151,6 @@ export const LESSONS: Lesson[] = [
     minutes: 8,
     level: "base",
     image: "/images/stance.jpg",
-    video: "/videos/stance.mp4",
-    youtubeId: "wmJ3lgtlNnw",
-    youtubeTitle: "La guardia, paso a paso — Alfonso Durán, campeón de España",
     diagram: "stance-feet",
     summary:
       "Pie de delante adelantado (izquierdo en ortodoxa, derecho en zurda), el de atrás abierto unos 45°, pies al ancho de hombros, rodillas vivas.",
@@ -205,7 +202,6 @@ export const LESSONS: Lesson[] = [
     minutes: 7,
     level: "base",
     image: "/images/block.jpg",
-    video: "/videos/block.mp4",
     diagram: "guard-labels",
     summary:
       "Puños a la altura de los pómulos, codos pegados a las costillas, mentón escondido, ojos arriba.",
@@ -253,7 +249,6 @@ export const LESSONS: Lesson[] = [
     minutes: 6,
     level: "base",
     image: "/images/stance.jpg",
-    video: "/videos/stance.mp4",
     diagram: "stance-feet",
     summary:
       "50/50 o un pelo más atrás. Nunca todo el peso en un pie. El centro vive entre las dos huellas.",
@@ -301,9 +296,6 @@ export const LESSONS: Lesson[] = [
     minutes: 8,
     level: "base",
     image: "/images/feet.jpg",
-    youtubeId: "YYeqmwthegc",
-    youtubeStart: 403,
-    youtubeTitle: "Juego de piernas básico — Tony Jeffries (medalla olímpica, en español)",
     diagram: "step-drag",
     summary:
       "El pie más cercano a donde vas pisa primero. El otro arrastra y recupera la distancia. Nunca se cruzan.",
@@ -351,8 +343,6 @@ export const LESSONS: Lesson[] = [
     minutes: 7,
     level: "base",
     image: "/images/shadow.jpg",
-    youtubeId: "4EtMgTJIbV4",
-    youtubeTitle: "Golpes con desplazamientos — Alfonso Durán",
     diagram: "step-drag",
     summary:
       "Se entra con el pie de delante. Se sale con el de atrás. La distancia se toma y se devuelve, no se habita.",
@@ -400,9 +390,6 @@ export const LESSONS: Lesson[] = [
     minutes: 7,
     level: "base",
     image: "/images/feet.jpg",
-    youtubeId: "YYeqmwthegc",
-    youtubeStart: 403,
-    youtubeTitle: "Pasos laterales dentro del juego de piernas — Tony Jeffries (en español)",
     diagram: "lateral",
     summary:
       "El boxeo no se vive en un pasillo. Sales del eje con el pie del lado hacia donde vas.",
@@ -450,9 +437,6 @@ export const LESSONS: Lesson[] = [
     minutes: 8,
     level: "intermedio",
     image: "/images/shadow.jpg",
-    youtubeId: "YYeqmwthegc",
-    youtubeStart: 2458,
-    youtubeTitle: "El pivote — Tony Jeffries (en español)",
     diagram: "pivot",
     summary:
       "Giras sobre el pie de delante. El de atrás dibuja un arco. Cambia el ángulo sin perder la guardia.",
@@ -500,9 +484,6 @@ export const LESSONS: Lesson[] = [
     minutes: 10,
     level: "base",
     image: "/images/jab.jpg",
-    youtubeId: "YYeqmwthegc",
-    youtubeStart: 561,
-    youtubeTitle: "El jab, dentro de los golpes — Tony Jeffries (en español)",
     diagram: "jab-path",
     summary:
       "El golpe de delante. Rápido, recto, se va y se vuelve. Mide, molesta y abre el resto.",
@@ -558,12 +539,8 @@ export const LESSONS: Lesson[] = [
     minutes: 10,
     level: "base",
     image: "/images/cross.jpg",
-    youtubeId: "YYeqmwthegc",
-    youtubeStart: 561,
-    youtubeTitle: "Los golpes: jab, recto, gancho y uppercut — Tony Jeffries (en español)",
     diagram: "cross-path",
-    summary:
-      "El de atrás. Sale de la rotación de cadera y del pie trasero, no del brazo.",
+    summary: "El de atrás. Sale de la rotación de cadera y del pie trasero, no del brazo.",
     why: "El recto es el primer golpe que 'pesa'. Si lo tiras con el brazo, se carga el hombro y se abre el costado. Si lo tiras con el suelo —pie, cadera, hombro, puño—, llega más lejos y vuelves más entero.",
     steps: [
       {
@@ -612,9 +589,6 @@ export const LESSONS: Lesson[] = [
     minutes: 10,
     level: "intermedio",
     image: "/images/hook.jpg",
-    youtubeId: "YYeqmwthegc",
-    youtubeStart: 561,
-    youtubeTitle: "Gancho dentro de la clase de golpes — Tony Jeffries (en español)",
     diagram: "hook-path",
     summary:
       "Golpe corto, codo a 90 grados, gira el cuerpo. El 3 es el de delante; el 4, el de atrás.",
@@ -662,9 +636,6 @@ export const LESSONS: Lesson[] = [
     minutes: 8,
     level: "intermedio",
     image: "/images/uppercut.jpg",
-    youtubeId: "YYeqmwthegc",
-    youtubeStart: 561,
-    youtubeTitle: "Uppercut dentro de la clase de golpes — Tony Jeffries (en español)",
     diagram: "uppercut-path",
     summary:
       "De abajo a arriba, corto, con las piernas. No es un gancho vertical ni un izado de maleta.",
@@ -712,8 +683,6 @@ export const LESSONS: Lesson[] = [
     minutes: 8,
     level: "base",
     image: "/images/shadow.jpg",
-    youtubeId: "4EtMgTJIbV4",
-    youtubeTitle: "Jab y recto con desplazamiento — Alfonso Durán",
     diagram: "combo-12",
     summary:
       "Jab y recto seguidos. El clásico. El 1 abre, el 2 llega. Las manos vuelven entre medio.",
@@ -756,17 +725,13 @@ export const LESSONS: Lesson[] = [
     id: "tres-golpes",
     module: "combos",
     order: 15,
-    title: "El 1-2-3 y el 1-1-2",
+    title: "El 1-2-3: jab, recto y gancho",
     kicker: "Combinaciones",
     minutes: 9,
     level: "intermedio",
     image: "/images/hook.jpg",
-    youtubeId: "YYeqmwthegc",
-    youtubeStart: 1576,
-    youtubeTitle: "Combinaciones — Tony Jeffries (en español)",
     diagram: "combo-123",
-    summary:
-      "Tres golpes sin perder el raíl. El 3 es un gancho corto, no un adorno al final.",
+    summary: "Tres golpes sin perder el raíl. El 3 es un gancho corto, no un adorno al final.",
     why: "El tercer golpe es donde el principiante se abre. Se enamora del combo y olvida la vuelta. Aquí se enseña a terminar cerrado.",
     steps: [
       {
@@ -774,8 +739,8 @@ export const LESSONS: Lesson[] = [
         body: "Jab, recto, gancho de delante. Después del 2, la cadera ya está girada: el 3 aprovecha el retorno de esa cadera. Corto. Las tres vueltas a la cara, luego un paso lateral o atrás.",
       },
       {
-        title: "1-1-2",
-        body: "Doble jab y recto. El primer jab mide, el segundo insiste o entra, el recto llega. Muy útil porque no te obliga a armar el gancho todavía. Los pies pueden dar dos pasitos cortos con los jabs.",
+        title: "Recupera la guardia",
+        body: "Después del gancho, devuelve la mano delantera a la cara. Comprueba que sigues equilibrado antes de dar un paso de salida.",
       },
       {
         title: "Respirar el combo",
@@ -785,7 +750,7 @@ export const LESSONS: Lesson[] = [
     cues: [
       "El 3 cabe en un cajón de mesilla.",
       "Terminas donde empezaste: dos manos, dos pies, mentón bajo.",
-      "Si el 1-2-3 te marea, vuelve al 1-1-2.",
+      "Si pierdes el equilibrio, vuelve al 1-2 y añade el gancho más despacio.",
     ],
     mistakes: [
       {
@@ -799,7 +764,7 @@ export const LESSONS: Lesson[] = [
     ],
     drill: {
       title: "Bloques de tres",
-      body: "1 minuto solo 1-1-2. 20 segundos quieto. 1 minuto 1-2-3. 20 segundos. 1 minuto mezclando, eligiendo uno u otro cada vez. Manos a la cara entre combos. 2 vueltas.",
+      body: "1 minuto de 1-2 suave. Descansa 20 segundos. 1 minuto de 1-2-3, con pausa en guardia después de cada combinación. Descansa 20 segundos. 1 minuto de 1-2-3 con un paso de salida. 2 vueltas.",
     },
   },
   {
@@ -811,13 +776,8 @@ export const LESSONS: Lesson[] = [
     minutes: 8,
     level: "base",
     image: "/images/block.jpg",
-    video: "/videos/block.mp4",
-    youtubeId: "YYeqmwthegc",
-    youtubeStart: 1976,
-    youtubeTitle: "Defensas: cubrir y bloquear — Tony Jeffries (en español)",
     diagram: "block-cover",
-    summary:
-      "Los antebrazos y los puños son el techo. No se ve, no se espera con la cara.",
+    summary: "Los antebrazos y los puños son el techo. No se ve, no se espera con la cara.",
     why: "Antes de escurrirte como un profesional, aprendes a no dejarte la cabeza en el aire. Cubrir no es esconderse para siempre: es un paraguas de un segundo mientras sales o contestas en sombra.",
     steps: [
       {
@@ -862,9 +822,6 @@ export const LESSONS: Lesson[] = [
     minutes: 9,
     level: "intermedio",
     image: "/images/slip.jpg",
-    youtubeId: "YYeqmwthegc",
-    youtubeStart: 2808,
-    youtubeTitle: "Movimiento de cabeza (slip) — Tony Jeffries (en español)",
     diagram: "slip-path",
     summary:
       "La cabeza se sale del raíl unos centímetros. Las manos se quedan. Las rodillas ayudan.",
@@ -913,9 +870,6 @@ export const LESSONS: Lesson[] = [
     minutes: 8,
     level: "intermedio",
     image: "/images/block.jpg",
-    youtubeId: "YYeqmwthegc",
-    youtubeStart: 1976,
-    youtubeTitle: "Defensas: desviar y paso atrás — Tony Jeffries (en español)",
     diagram: "parry",
     summary:
       "Desvías un jab imaginario con la mano de atrás, o simplemente no estás: un paso y se acaba.",
@@ -963,8 +917,6 @@ export const LESSONS: Lesson[] = [
     minutes: 9,
     level: "intermedio",
     image: "/images/slip.jpg",
-    youtubeId: "vVg0BSTy9Ew",
-    youtubeTitle: "Cómo hacer el roll — Tony Jeffries (en español)",
     diagram: "roll-path",
     summary:
       "Te agachas y dibujas una U. Pasas por debajo de un gancho imaginario y sales al otro lado.",
@@ -991,7 +943,7 @@ export const LESSONS: Lesson[] = [
     mistakes: [
       {
         bad: "Agacharse recto y subir recto, sin cruzar.",
-      fix: "Eso es un duck. El weave cruza. Sin el cruce no sales del gancho.",
+        fix: "Eso es un duck. El weave cruza. Sin el cruce no sales del gancho.",
       },
       {
         bad: "Poner las manos en las rodillas.",
@@ -1012,9 +964,6 @@ export const LESSONS: Lesson[] = [
     minutes: 10,
     level: "intermedio",
     image: "/images/shadow.jpg",
-    youtubeId: "YYeqmwthegc",
-    youtubeStart: 2647,
-    youtubeTitle: "Cómo respirar y aguantar el asalto — Tony Jeffries (en español)",
     diagram: "punch-clock",
     summary:
       "El boxeo se mide en rounds. Tres minutos de trabajo, uno de descanso. La sombra es el entreno de verdad.",
@@ -1055,9 +1004,15 @@ export const LESSONS: Lesson[] = [
   },
 ];
 
-export const LESSON_BY_ID = Object.fromEntries(
-  LESSONS.map((l) => [l.id, l]),
-) as Record<string, Lesson>;
+export const LESSONS: Lesson[] = LESSON_CONTENT.map((lesson) => ({
+  ...lesson,
+  image: clipsForLesson(lesson.id)[0]?.image ?? lesson.image,
+}));
+
+export const LESSON_BY_ID = Object.fromEntries(LESSONS.map((l) => [l.id, l])) as Record<
+  string,
+  Lesson
+>;
 
 export function lessonsFor(moduleId: ModuleInfo["id"]) {
   return LESSONS.filter((l) => l.module === moduleId);

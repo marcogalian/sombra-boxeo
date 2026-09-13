@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { LESSONS, MODULES } from "./curriculum.ts";
 import { WORKOUTS } from "./workouts.ts";
+import { clipsForLesson } from "./lesson-videos.ts";
+import { existsSync } from "node:fs";
 
 describe("curriculum order and numbering", () => {
   it("keeps twenty lessons in a single sequence", () => {
@@ -31,14 +33,20 @@ describe("curriculum order and numbering", () => {
     assert.ok(idx("slip") < idx("sombra-rounds"));
   });
 
-  it("points defense videos at the matching chapters", () => {
-    const block = LESSONS.find((l) => l.id === "bloqueo");
-    const slip = LESSONS.find((l) => l.id === "slip");
-    const roll = LESSONS.find((l) => l.id === "roll");
-    assert.equal(block?.youtubeId, "YYeqmwthegc");
-    assert.equal(block?.youtubeStart, 1976);
-    assert.equal(slip?.youtubeStart, 2808);
-    assert.equal(roll?.youtubeId, "vVg0BSTy9Ew");
+  it("provides attributed local clips and posters for every lesson", () => {
+    for (const lesson of LESSONS) {
+      const clips = clipsForLesson(lesson.id);
+      assert.ok(clips.length > 0, lesson.id);
+      for (const clip of clips) {
+        assert.ok(clip.creator && clip.language && clip.watchFor);
+        assert.match(clip.url, /^https:\/\//);
+        assert.match(clip.video, /^\/videos\/lessons\//);
+        assert.ok(existsSync(new URL(`../../../public${clip.video}`, import.meta.url)), clip.video);
+        assert.ok(existsSync(new URL(`../../../public${clip.image}`, import.meta.url)), clip.image);
+      }
+    }
+    assert.notEqual(clipsForLesson("uppercut")[0].video, clipsForLesson("ganchos")[0].video);
+    assert.notEqual(clipsForLesson("slip")[0].video, clipsForLesson("roll")[0].video);
   });
 
   it("has a module for every lesson", () => {

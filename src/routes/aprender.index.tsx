@@ -15,15 +15,17 @@ function Escuela() {
       <p className="text-[11px] tracking-[0.2em] text-subtle">ESCUELA</p>
       <h1 className="font-display text-4xl leading-none text-fg sm:text-5xl">De cero al round</h1>
       <p className="mt-3 text-sm leading-relaxed text-muted">
-        Veinte lecciones, en orden. Cada una tiene foto o dibujo, pasos claros
-        y un ejercicio corto. Donde hace falta, un vídeo de un entrenador real
-        en español — no un clip de película.
+        Veinte lecciones con vídeos de entrenadores, pasos claros y un ejercicio corto. Mira cada
+        técnica aquí mismo, repítela y baja la velocidad para observar los detalles. El idioma del
+        audio se indica en cada clip.
       </p>
       <p className="mt-4 text-sm text-accent">
         {done} de {LESSONS.length} hechas
       </p>
 
-      <VideoLibrary />
+      <a href="#videoteca" className="mt-3 inline-flex min-h-11 items-center text-sm text-accent">
+        Ver los 7 clips de Instagram
+      </a>
 
       <div className="mt-8 space-y-10">
         {MODULES.map((mod) => {
@@ -52,11 +54,7 @@ function Escuela() {
                         className="flex min-h-16 items-center gap-3 rounded-xl bg-surface px-3 py-3"
                       >
                         <span className="relative size-14 shrink-0 overflow-hidden rounded-md">
-                          <img
-                            src={lesson.image}
-                            alt=""
-                            className="size-full object-cover"
-                          />
+                          <img src={lesson.image} alt="" className="size-full object-cover" />
                           {ok ? (
                             <span className="absolute inset-0 flex items-center justify-center bg-bg/55">
                               <Check className="size-5 text-accent" />
@@ -79,6 +77,9 @@ function Escuela() {
             </section>
           );
         })}
+      </div>
+      <div className="mt-10">
+        <VideoLibrary />
       </div>
     </main>
   );

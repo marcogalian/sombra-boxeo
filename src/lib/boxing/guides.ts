@@ -1,3 +1,4 @@
+import { clipsForLesson } from "./lesson-videos";
 import type { ModuleId } from "./types";
 
 export type VideoSectionId = ModuleId | "rapidez" | "forma";
@@ -15,7 +16,7 @@ export const VIDEO_SECTIONS: {
   { id: "forma", label: "En forma", description: "Resistencia de boxeador" },
 ];
 
-export const FEATURED_GUIDES: {
+const GUIDE_CONTENT: {
   id: string;
   section: VideoSectionId;
   title: string;
@@ -130,6 +131,11 @@ export const FEATURED_GUIDES: {
   },
 ];
 
+export const FEATURED_GUIDES = GUIDE_CONTENT.map((guide) => ({
+  ...guide,
+  image: guide.lessonId ? (clipsForLesson(guide.lessonId)[0]?.image ?? guide.image) : guide.image,
+}));
+
 export type InstagramReel = {
   video: string;
   id: string;
@@ -237,33 +243,6 @@ export const INSTAGRAM_REELS: InstagramReel[] = [
     image: "/videos/coaches/frank-heavy-bag.jpg",
   },
 ];
-
-const DEMO_BY_LESSON: Record<string, string> = {
-  "para-que": "/videos/shadow.mp4",
-  espacio: "/videos/jumprope.mp4",
-  postura: "/videos/stance.mp4",
-  manos: "/videos/block.mp4",
-  equilibrio: "/videos/stance.mp4",
-  "paso-arrastre": "/videos/stance.mp4",
-  "adelante-atras": "/videos/stance.mp4",
-  laterales: "/videos/stance.mp4",
-  pivote: "/videos/stance.mp4",
-  jab: "/videos/jab.mp4",
-  cross: "/videos/cross.mp4",
-  ganchos: "/videos/hook.mp4",
-  uppercut: "/videos/hook.mp4",
-  "uno-dos": "/videos/cross.mp4",
-  "tres-golpes": "/videos/hook.mp4",
-  bloqueo: "/videos/block.mp4",
-  slip: "/videos/slip.mp4",
-  parry: "/videos/block.mp4",
-  roll: "/videos/slip.mp4",
-  "sombra-rounds": "/videos/shadow.mp4",
-};
-
-export function demoForLesson(id: string) {
-  return DEMO_BY_LESSON[id];
-}
 
 export const PRACTICE_BY_LESSON: Record<string, string> = {
   "para-que": "primer-dia",

@@ -7,8 +7,8 @@ export const WORKOUTS: Workout[] = [
     durationMin: 12,
     level: "inicio",
     focus: "Calentar, guardia y jab",
-    image: "/images/warmup.jpg",
-    video: "/videos/stance.mp4",
+    image: "/videos/lessons/stance.jpg",
+    video: "/videos/lessons/stance.mp4",
     equipment: ["Espacio libre", "Espejo si puedes"],
     afterLesson: "postura",
     blocks: [
@@ -72,8 +72,8 @@ export const WORKOUTS: Workout[] = [
     durationMin: 18,
     level: "base",
     focus: "Pies, 1-2 y guardia alta",
-    image: "/images/stance.jpg",
-    video: "/videos/shadow.mp4",
+    image: "/videos/lessons/shadow.jpg",
+    video: "/videos/lessons/shadow.mp4",
     equipment: ["Espacio libre"],
     afterLesson: "uno-dos",
     blocks: [
@@ -81,10 +81,7 @@ export const WORKOUTS: Workout[] = [
         kind: "prep",
         title: "Calentar",
         seconds: 180,
-        notes: [
-          "2 min de micro-salto o cuerda",
-          "1 min de movilidad de hombros y cadera",
-        ],
+        notes: ["2 min de micro-salto o cuerda", "1 min de movilidad de hombros y cadera"],
       },
       {
         kind: "drill",
@@ -122,8 +119,8 @@ export const WORKOUTS: Workout[] = [
     durationMin: 18,
     level: "base",
     focus: "Desplazamiento + mano de delante",
-    image: "/images/feet.jpg",
-    video: "/videos/jab.mp4",
+    image: "/videos/lessons/jab.jpg",
+    video: "/videos/lessons/jab.mp4",
     equipment: ["Espacio libre"],
     afterLesson: "jab",
     blocks: [
@@ -170,8 +167,8 @@ export const WORKOUTS: Workout[] = [
     durationMin: 21,
     level: "intermedio",
     focus: "1-2, 1-2-3 y salida",
-    image: "/images/hook.jpg",
-    video: "/videos/hook.mp4",
+    image: "/videos/lessons/lead-hook.jpg",
+    video: "/videos/lessons/lead-hook.mp4",
     equipment: ["Espacio libre", "Espejo"],
     afterLesson: "tres-golpes",
     blocks: [
@@ -218,8 +215,8 @@ export const WORKOUTS: Workout[] = [
     durationMin: 18,
     level: "intermedio",
     focus: "Cubrir, escurrir, desviar, pies",
-    image: "/images/slip.jpg",
-    video: "/videos/slip.mp4",
+    image: "/videos/lessons/slip.jpg",
+    video: "/videos/lessons/slip.mp4",
     equipment: ["Espacio libre"],
     afterLesson: "slip",
     blocks: [
@@ -233,11 +230,7 @@ export const WORKOUTS: Workout[] = [
         kind: "drill",
         title: "Metrónomo de slip",
         seconds: 80,
-        notes: [
-          "Izquierda, centro, derecha, centro",
-          "Manos pegadas",
-          "Centímetros, no palmos",
-        ],
+        notes: ["Izquierda, centro, derecha, centro", "Manos pegadas", "Centímetros, no palmos"],
       },
       {
         kind: "round",
@@ -272,8 +265,8 @@ export const WORKOUTS: Workout[] = [
     durationMin: 28,
     level: "intermedio",
     focus: "Sombra continua, ritmo de gym",
-    image: "/images/shadow.jpg",
-    video: "/videos/shadow.mp4",
+    image: "/videos/lessons/shadow.jpg",
+    video: "/videos/lessons/shadow.mp4",
     equipment: ["Espacio libre", "Agua cerca"],
     afterLesson: "sombra-rounds",
     blocks: [
@@ -312,8 +305,8 @@ export const WORKOUTS: Workout[] = [
     durationMin: 12,
     level: "base",
     focus: "Pies ligeros, ráfagas y vuelta a guardia",
-    image: "/images/shadow.jpg",
-    video: "/videos/shadow.mp4",
+    image: "/videos/lessons/shadow.jpg",
+    video: "/videos/lessons/shadow.mp4",
     equipment: ["Espacio libre"],
     afterLesson: "uno-dos",
     blocks: [
@@ -321,10 +314,7 @@ export const WORKOUTS: Workout[] = [
         kind: "prep",
         title: "Activar",
         seconds: 60,
-        notes: [
-          "Marcha rápida y hombros sueltos",
-          "No busques velocidad en frío",
-        ],
+        notes: ["Marcha rápida y hombros sueltos", "No busques velocidad en frío"],
       },
       {
         kind: "drill",
@@ -364,10 +354,7 @@ export const WORKOUTS: Workout[] = [
         kind: "drill",
         title: "Final con control",
         seconds: 90,
-        notes: [
-          "Veinte segundos vivo, diez suave",
-          "Si se cae la guardia, reduce la velocidad",
-        ],
+        notes: ["Veinte segundos vivo, diez suave", "Si se cae la guardia, reduce la velocidad"],
       },
       {
         kind: "prep",
@@ -383,8 +370,8 @@ export const WORKOUTS: Workout[] = [
     durationMin: 13,
     level: "base",
     focus: "Cuerda, piernas, hombros, core",
-    image: "/images/jumprope.jpg",
-    video: "/videos/jumprope.mp4",
+    image: "/videos/lessons/warmup.jpg",
+    video: "/videos/lessons/warmup.mp4",
     equipment: ["Cuerda si tienes", "Si no, saltos en el sitio"],
     blocks: [
       {
@@ -427,10 +414,7 @@ export const WORKOUTS: Workout[] = [
         kind: "drill",
         title: "Flexiones o plancha",
         seconds: 45,
-        notes: [
-          "Flexiones con codos cerca, o plancha si hace falta",
-          "No dejes caer la cadera",
-        ],
+        notes: ["Flexiones con codos cerca, o plancha si hace falta", "No dejes caer la cadera"],
       },
       {
         kind: "drill",
@@ -457,10 +441,7 @@ export const WORKOUTS: Workout[] = [
         kind: "drill",
         title: "Core",
         seconds: 60,
-        notes: [
-          "Plancha o dead bug lento",
-          "El abdomen cierra, no el cuello",
-        ],
+        notes: ["Plancha o dead bug lento", "El abdomen cierra, no el cuello"],
       },
       {
         kind: "prep",
@@ -476,8 +457,8 @@ export const WORKOUTS: Workout[] = [
     durationMin: 14,
     level: "base",
     focus: "Tres rounds a tu aire, con estructura",
-    image: "/images/shadow.jpg",
-    video: "/videos/shadow.mp4",
+    image: "/videos/lessons/shadow.jpg",
+    video: "/videos/lessons/shadow.mp4",
     equipment: ["Espacio libre"],
     afterLesson: "uno-dos",
     blocks: [
@@ -509,9 +490,10 @@ export const WORKOUTS: Workout[] = [
   },
 ];
 
-export const WORKOUT_BY_ID = Object.fromEntries(
-  WORKOUTS.map((w) => [w.id, w]),
-) as Record<string, Workout>;
+export const WORKOUT_BY_ID = Object.fromEntries(WORKOUTS.map((w) => [w.id, w])) as Record<
+  string,
+  Workout
+>;
 
 export function recommendedWorkoutId(completed: string[]) {
   const has = (id: string) => completed.includes(id);
