@@ -1,4 +1,5 @@
 import type { Workout } from "./types";
+import { PLAN_WORKOUTS } from "./plan.ts";
 
 export const WORKOUTS: Workout[] = [
   {
@@ -490,10 +491,9 @@ export const WORKOUTS: Workout[] = [
   },
 ];
 
-export const WORKOUT_BY_ID = Object.fromEntries(WORKOUTS.map((w) => [w.id, w])) as Record<
-  string,
-  Workout
->;
+export const WORKOUT_BY_ID = Object.fromEntries(
+  [...WORKOUTS, ...PLAN_WORKOUTS].map((w) => [w.id, w]),
+) as Record<string, Workout>;
 
 export function recommendedWorkoutId(completed: string[]) {
   const has = (id: string) => completed.includes(id);

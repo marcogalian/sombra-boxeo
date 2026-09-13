@@ -4,7 +4,7 @@
 
 ## Estado actual
 
-La aplicación está lista para probar. Está orientada a móvil y permite aprender técnica de boxeo, seguir entrenamientos por rounds cronometrados y consultar un plan progresivo de seis semanas. El progreso se guarda en el dispositivo.
+La aplicación está lista para probar. Está orientada a móvil y permite aprender técnica de boxeo, seguir entrenamientos por rounds cronometrados y consultar un roadmap de ocho etapas y 24 sesiones. El progreso se guarda en el dispositivo.
 
 ## Mejoras realizadas
 
@@ -20,7 +20,7 @@ La aplicación está lista para probar. Está orientada a móvil y permite apren
 - Fuentes, cortes y criterios de revisión documentados en `REVISION_VIDEOS.md`.
 - Ejercicios relacionados para pasar directamente de aprender a practicar.
 - Entrenamiento específico de rapidez técnica.
-- Plan progresivo de seis semanas con objetivos y sesiones semanales.
+- Roadmap de ocho etapas y 24 sesiones: siguiente paso, vídeos, práctica guiada y criterios de avance.
 - Navegación y tarjetas adaptadas a pantallas móviles.
 
 ## Reels de Instagram seleccionados
@@ -63,5 +63,11 @@ Las 20 lecciones se prueban con `scripts/check-lesson-videos.mjs`: reproducción
 2. Reproducir un clip de cada categoría; probar cámara lenta, repetición y reinicio sin salir de la app.
 3. Abrir Jab — el 1 y comprobar el nuevo entrenador. Entrar también en Ganchos y Uppercut: cada una tiene dos demostraciones.
 4. Iniciar el entrenamiento de rapidez, pausar y continuar el cronómetro.
-5. Revisar el plan de seis semanas.
+5. Abrir Tu ruta, practicar una sesión y completar la autoevaluación de cada etapa.
 6. Marcar una lección como terminada, recargar la aplicación y confirmar que el progreso permanece.
+
+## Roadmap de aprendizaje
+
+Ocho etapas: base, pies, jab/recto, ganchos/uppercuts, defensa, ángulos, rapidez y rounds. Tres sesiones por etapa, con semanas orientativas. Cada sesión tiene lecciones enlazadas y un entrenamiento propio. El progreso de la ruta se marca después de practicar; no se infiere de vídeos vistos ni del reloj. La autoevaluación se activa después de las tres sesiones. Se conservan los datos anteriores del dispositivo.
+
+Pruebas: `src/lib/boxing/plan.test.ts` y `scripts/check-roadmap.mjs` cubren enlaces, progreso, persistencia, datos anteriores, reloj, repaso y finalización.

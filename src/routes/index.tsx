@@ -76,9 +76,9 @@ function Home() {
             <CalendarDays className="size-5" />
           </span>
           <span className="min-w-0 flex-1">
-            <span className="text-xs tracking-[0.16em] text-subtle">PLAN GUIADO</span>
-            <span className="mt-1 block text-base font-medium">6 semanas · 3 días</span>
-            <span className="mt-1 block text-sm text-muted">Técnica, rapidez y condición</span>
+            <span className="text-xs tracking-[0.16em] text-subtle">TU CAMINO PASO A PASO</span>
+            <span className="mt-1 block text-base font-medium">8 etapas · 24 sesiones</span>
+            <span className="mt-1 block text-sm text-muted">Qué hacer hoy y cuándo avanzar</span>
           </span>
           <ArrowRight className="size-5 shrink-0 text-accent" />
         </Link>

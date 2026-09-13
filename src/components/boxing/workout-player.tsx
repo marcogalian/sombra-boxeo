@@ -149,8 +149,7 @@ export function WorkoutPlayer({ workout }: { workout: Workout }) {
 
   const totalSeconds = steps.reduce((a, s) => a + s.seconds, 0);
   const passed =
-    steps.slice(0, index).reduce((a, s) => a + s.seconds, 0) +
-    ((step?.seconds ?? 0) - left);
+    steps.slice(0, index).reduce((a, s) => a + s.seconds, 0) + ((step?.seconds ?? 0) - left);
   const progress = totalSeconds ? Math.min(1, passed / totalSeconds) : 0;
   const work = step?.kind === "work";
   const restful = step?.kind === "between" || step?.kind === "rest";
@@ -189,7 +188,9 @@ export function WorkoutPlayer({ workout }: { workout: Workout }) {
         </p>
         <div className="mt-8 flex flex-col gap-3">
           <Button asChild size="lg">
-            <Link to="/entrenar">Volver al ring</Link>
+            <Link to={workout.id.startsWith("ruta-") ? "/plan" : "/entrenar"}>
+              {workout.id.startsWith("ruta-") ? "Registrar en mi ruta" : "Volver al ring"}
+            </Link>
           </Button>
           <Button asChild variant="outline" size="lg">
             <Link to="/progreso">Ver el log</Link>
@@ -222,9 +223,7 @@ export function WorkoutPlayer({ workout }: { workout: Workout }) {
         <p className="font-display text-7xl tabular-nums leading-none tracking-wide text-fg">
           {formatMmSs(left)}
         </p>
-        <p className="mt-3 text-sm text-muted">
-          {work ? "Trabajo" : restful ? "Pausa" : "Bloque"}
-        </p>
+        <p className="mt-3 text-sm text-muted">{work ? "Trabajo" : restful ? "Pausa" : "Bloque"}</p>
       </div>
       <ul className="mt-5 flex-1 space-y-2">
         {step.notes.map((n) => (
@@ -245,7 +244,13 @@ export function WorkoutPlayer({ workout }: { workout: Workout }) {
             {running ? <Pause className="size-5" /> : <Play className="size-5" />}
             {running ? "Pausa" : "Empezar"}
           </Button>
-          <Button size="lg" variant="outline" className="min-h-14 min-w-14" onClick={skip} aria-label="Saltar bloque">
+          <Button
+            size="lg"
+            variant="outline"
+            className="min-h-14 min-w-14"
+            onClick={skip}
+            aria-label="Saltar bloque"
+          >
             <SkipForward className="size-5" />
           </Button>
         </div>

@@ -7,6 +7,10 @@ type BoxingState = {
   lastLessonId: string | null;
   stance: Stance;
   sessions: SessionLog[];
+  completedPlanSessions: string[];
+  completedPlanChecks: string[];
+  togglePlanSession: (id: string) => void;
+  togglePlanCheck: (id: string) => void;
   completeLesson: (id: string) => void;
   setLastLesson: (id: string) => void;
   setStance: (stance: Stance) => void;
@@ -21,6 +25,20 @@ export const useBoxingStore = create<BoxingState>()(
       lastLessonId: null,
       stance: "orthodox",
       sessions: [],
+      completedPlanSessions: [],
+      completedPlanChecks: [],
+      togglePlanSession: (id) =>
+        set((s) => ({
+          completedPlanSessions: s.completedPlanSessions.includes(id)
+            ? s.completedPlanSessions.filter((item) => item !== id)
+            : [...s.completedPlanSessions, id],
+        })),
+      togglePlanCheck: (id) =>
+        set((s) => ({
+          completedPlanChecks: s.completedPlanChecks.includes(id)
+            ? s.completedPlanChecks.filter((item) => item !== id)
+            : [...s.completedPlanChecks, id],
+        })),
       completeLesson: (id) =>
         set((s) => ({
           completedLessons: s.completedLessons.includes(id)
@@ -32,16 +50,18 @@ export const useBoxingStore = create<BoxingState>()(
       setStance: (stance) => set({ stance }),
       logSession: (workoutId, seconds) =>
         set((s) => ({
-          sessions: [
-            { workoutId, at: new Date().toISOString(), seconds },
-            ...s.sessions,
-          ].slice(0, 120),
+          sessions: [{ workoutId, at: new Date().toISOString(), seconds }, ...s.sessions].slice(
+            0,
+            120,
+          ),
         })),
       resetProgress: () =>
         set({
           completedLessons: [],
           lastLessonId: null,
           sessions: [],
+          completedPlanSessions: [],
+          completedPlanChecks: [],
         }),
     }),
     { name: "sombra-progress" },
