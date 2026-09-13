@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, CalendarDays, Shield } from "lucide-react";
+import { ArrowRight, CalendarDays, Instagram, Shield } from "lucide-react";
 import { LESSONS, MODULES, firstUnseen } from "@/lib/boxing/curriculum";
 import { recommendedWorkoutId, WORKOUT_BY_ID } from "@/lib/boxing/workouts";
 import { streakFrom, useBoxingStore } from "@/lib/boxing/store";
@@ -36,8 +36,8 @@ function Home() {
           <p className="text-[11px] tracking-[0.22em] text-accent">SIN RIVAL</p>
           <h1 className="font-display text-5xl leading-none text-fg sm:text-6xl">SOMBRA</h1>
           <p className="mt-2 max-w-sm text-sm leading-relaxed text-fg/90">
-            Escuela de boxeo en casa. Moverte, golpear y defenderte — sin rival
-            y sin prisa de profesional.
+            Escuela de boxeo en casa. Moverte, golpear y defenderte — sin rival y sin prisa de
+            profesional.
           </p>
         </div>
       </section>
@@ -48,6 +48,22 @@ function Home() {
           <Stat label="Ruta" value={`${pct}%`} />
           <Stat label="Racha" value={`${streak} d`} />
         </div>
+
+        <Link
+          to="/aprender"
+          hash="videoteca"
+          className="flex items-center gap-4 rounded-2xl bg-accent p-4 text-accent-fg"
+        >
+          <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-accent-fg/12">
+            <Instagram className="size-6" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="text-xs font-semibold tracking-[0.16em]">NUEVO · 7 REELS</span>
+            <span className="mt-1 block text-base font-semibold">Vídeos cortos de Instagram</span>
+            <span className="mt-1 block text-sm opacity-80">Pies, esquivas, golpes y rapidez</span>
+          </span>
+          <ArrowRight className="size-5 shrink-0" />
+        </Link>
 
         <Link
           to="/plan"
@@ -77,12 +93,8 @@ function Home() {
                 className="size-20 shrink-0 rounded-lg object-cover"
               />
               <div className="min-w-0 flex-1">
-                <p className="text-[11px] tracking-[0.16em] text-subtle">
-                  CONTINUAR
-                </p>
-                <h2 className="mt-1 truncate text-base font-medium">
-                  {continueLesson.title}
-                </h2>
+                <p className="text-[11px] tracking-[0.16em] text-subtle">CONTINUAR</p>
+                <h2 className="mt-1 truncate text-base font-medium">{continueLesson.title}</h2>
                 <p className="mt-1 text-sm text-muted">
                   {continueLesson.minutes} min · {continueLesson.kicker}
                 </p>
@@ -104,11 +116,7 @@ function Home() {
             params={{ workoutId: workout.id }}
             className="block overflow-hidden rounded-2xl bg-elevated"
           >
-            <img
-              src={workout.image}
-              alt=""
-              className="h-40 w-full object-cover"
-            />
+            <img src={workout.image} alt="" className="h-40 w-full object-cover" />
             <div className="p-4">
               <p className="text-[11px] tracking-[0.16em] text-subtle">
                 {workout.durationMin} MIN · {workout.level.toUpperCase()}
@@ -135,9 +143,7 @@ function Home() {
                     hash={m.id}
                     className="flex items-center gap-3 rounded-xl bg-surface px-4 py-3"
                   >
-                    <span className="font-display text-2xl text-subtle">
-                      {m.number}
-                    </span>
+                    <span className="font-display text-2xl text-subtle">{m.number}</span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-medium">{m.title}</span>
                       <span className="block text-xs text-muted">
@@ -160,8 +166,8 @@ function Home() {
         <section className="rounded-2xl border border-border bg-elevated p-4">
           <p className="text-[11px] tracking-[0.16em] text-subtle">TU GUARDIA</p>
           <p className="mt-2 text-sm text-muted">
-            Ortodoxa: pie izquierdo delante. Zurda: pie derecho delante. Los
-            dibujos de pies se invierten.
+            Ortodoxa: pie izquierdo delante. Zurda: pie derecho delante. Los dibujos de pies se
+            invierten.
           </p>
           <div className="mt-3 grid grid-cols-2 gap-2">
             <button
@@ -192,9 +198,9 @@ function Home() {
         <aside className="flex gap-3 rounded-2xl bg-surface p-4">
           <Shield className="mt-0.5 size-5 shrink-0 text-accent" />
           <p className="text-sm leading-relaxed text-muted">
-            Esto no es para pelear con nadie. No hay sparring ni contacto. Si
-            duele una articulación, paras. El saco, solo con vendas y cuando
-            las lecciones de golpe ya estén limpias en el aire.
+            Esto no es para pelear con nadie. No hay sparring ni contacto. Si duele una
+            articulación, paras. El saco, solo con vendas y cuando las lecciones de golpe ya estén
+            limpias en el aire.
           </p>
         </aside>
       </div>

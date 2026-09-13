@@ -9,6 +9,10 @@ import {
 } from "@/lib/boxing/guides";
 import { cn } from "@/lib/utils";
 
+function instagramEmbedUrl(url: string) {
+  return `${url.replace(/\/$/, "")}/embed/`;
+}
+
 export function VideoLibrary() {
   const [section, setSection] = useState<VideoSectionId>("piernas");
   const guides = FEATURED_GUIDES.filter((guide) => guide.section === section);
@@ -16,18 +20,18 @@ export function VideoLibrary() {
   const current = VIDEO_SECTIONS.find((item) => item.id === section);
 
   return (
-    <section className="mt-8">
+    <section id="videoteca" className="mt-8 scroll-mt-6">
       <div className="flex items-end justify-between gap-4">
         <div>
           <p className="text-xs tracking-[0.18em] text-accent">VIDEOTECA</p>
           <h2 className="mt-1 font-display text-3xl leading-none">Aprende mirando</h2>
         </div>
-        <span className="text-xs tabular-nums text-subtle">
-          {FEATURED_GUIDES.length + INSTAGRAM_REELS.length} vídeos
+        <span className="text-right text-xs tabular-nums text-subtle">
+          {INSTAGRAM_REELS.length} Reels · {FEATURED_GUIDES.length} guías
         </span>
       </div>
       <p className="mt-2 text-sm leading-relaxed text-muted">
-        Elige qué quieres mejorar. Cada guía une vídeo, claves técnicas y práctica.
+        Vídeos cortos de entrenadores reales, ordenados por la habilidad que quieres mejorar.
       </p>
 
       <div className="-mx-5 mt-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -52,10 +56,90 @@ export function VideoLibrary() {
       </div>
 
       <p className="mt-2 text-xs text-subtle">{current?.description}</p>
-      <div className="mt-3 flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-subtle">
-        <span>GUÍAS DE LA APP</span>
+
+      <div className="mt-5 flex items-end justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2 text-accent">
+            <Instagram className="size-4" />
+            <p className="text-xs tracking-[0.16em]">VÍDEOS CORTOS DE INSTAGRAM</p>
+          </div>
+          <h3 className="mt-1 font-display text-2xl leading-none">Mira y repite</h3>
+        </div>
+        <span className="rounded-full border border-border bg-elevated px-2.5 py-1 text-[10px] text-subtle">
+          {reels.length} en esta sección
+        </span>
+      </div>
+      <p className="mt-2 text-sm leading-relaxed text-muted">
+        Pulsa el vídeo para reproducirlo aquí. Desliza para ver el siguiente.
+      </p>
+
+      <div className="-mx-5 mt-4 overflow-x-auto px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex w-max snap-x snap-mandatory gap-4">
+          {reels.map((reel) => (
+            <article
+              key={reel.id}
+              className="w-[82vw] max-w-sm snap-center overflow-hidden rounded-2xl border border-border bg-surface"
+            >
+              <div className="flex items-start justify-between gap-3 p-4">
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-medium text-accent">{reel.creator}</span>
+                    <span className="rounded-full bg-elevated px-2 py-0.5 text-[9px] font-semibold tracking-wide text-subtle">
+                      {reel.level}
+                    </span>
+                  </div>
+                  <h4 className="mt-1 text-base font-semibold leading-snug">{reel.title}</h4>
+                </div>
+                <Instagram className="mt-0.5 size-5 shrink-0 text-accent" />
+              </div>
+
+              <div className="aspect-[9/16] overflow-hidden border-y border-border bg-black">
+                <iframe
+                  src={instagramEmbedUrl(reel.url)}
+                  title={`${reel.title} — ${reel.creator}`}
+                  loading="lazy"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="size-full border-0 bg-white"
+                />
+              </div>
+
+              <div className="p-4">
+                <p className="text-xs leading-relaxed text-muted">{reel.summary}</p>
+                <p className="mt-3 border-l-2 border-accent/60 pl-2 text-xs leading-relaxed text-subtle">
+                  <strong className="font-semibold text-foreground">Mira:</strong> {reel.watchFor}
+                </p>
+                <p className="mt-2 text-xs leading-relaxed text-muted">
+                  <strong className="font-semibold text-foreground">Practica:</strong>{" "}
+                  {reel.practice}
+                </p>
+                <a
+                  href={reel.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 flex min-h-11 items-center justify-between rounded-xl border border-border bg-elevated px-3 text-xs font-medium text-accent"
+                >
+                  Abrir Reel original
+                  <ExternalLink className="size-4" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <p className="mt-1 text-[11px] leading-relaxed text-subtle">
+        Los reproductores pertenecen a Instagram y pueden pedir que inicies sesión. Siempre tienes
+        el enlace a la publicación original.
+      </p>
+
+      <div className="mt-8 flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-subtle">
+        <span>LECCIONES PASO A PASO</span>
         <span className="h-px flex-1 bg-border" />
       </div>
+      <p className="mt-2 text-sm leading-relaxed text-muted">
+        Después del Reel, practica la misma habilidad con una guía de la app.
+      </p>
       <div className="mt-3 grid grid-cols-2 gap-3">
         {guides.map((guide) => {
           const content = (
@@ -99,69 +183,6 @@ export function VideoLibrary() {
           );
         })}
       </div>
-
-      <div className="mt-7 flex items-end justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 text-accent">
-            <Instagram className="size-4" />
-            <p className="text-xs tracking-[0.16em]">REELS SELECCIONADOS</p>
-          </div>
-          <h3 className="mt-1 font-display text-2xl leading-none">
-            Mira una idea. Practica una idea.
-          </h3>
-        </div>
-        <span className="rounded-full border border-border bg-elevated px-2.5 py-1 text-[10px] text-subtle">
-          {reels.length} en esta sección
-        </span>
-      </div>
-      <p className="mt-2 text-sm leading-relaxed text-muted">
-        Clips originales de entrenadores, con la clave que debes observar antes de repetirlos.
-      </p>
-
-      <div className="mt-3 space-y-3">
-        {reels.map((reel) => (
-          <a
-            key={reel.id}
-            href={reel.url}
-            target="_blank"
-            rel="noreferrer"
-            className="group grid min-h-36 grid-cols-[7rem_1fr] overflow-hidden rounded-2xl border border-border bg-surface transition-colors hover:border-accent/50"
-          >
-            <span className="relative overflow-hidden bg-surface-2">
-              <img
-                src={reel.image}
-                alt=""
-                className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <span className="absolute inset-0 bg-bg/25" />
-              <span className="absolute left-2 top-2 rounded-full bg-bg/80 px-2 py-1 text-[9px] font-semibold tracking-wide text-foreground backdrop-blur">
-                {reel.level}
-              </span>
-              <span className="absolute bottom-2 left-2 flex size-9 items-center justify-center rounded-full bg-accent text-accent-fg shadow-[var(--shadow-soft)]">
-                <Play className="size-4 fill-current" />
-              </span>
-            </span>
-            <span className="flex min-w-0 flex-col p-3.5">
-              <span className="flex items-start justify-between gap-2">
-                <span className="text-[11px] font-medium text-accent">{reel.creator}</span>
-                <ExternalLink className="size-3.5 shrink-0 text-subtle" />
-              </span>
-              <span className="mt-1 block text-base font-semibold leading-snug">{reel.title}</span>
-              <span className="mt-1 block text-xs leading-relaxed text-muted">{reel.summary}</span>
-              <span className="mt-3 block border-l-2 border-accent/60 pl-2 text-[11px] leading-relaxed text-subtle">
-                <strong className="font-semibold text-foreground">Mira:</strong> {reel.watchFor}
-              </span>
-              <span className="mt-2 block text-[11px] leading-relaxed text-muted">
-                <strong className="font-semibold text-foreground">Practica:</strong> {reel.practice}
-              </span>
-            </span>
-          </a>
-        ))}
-      </div>
-      <p className="mt-3 text-[11px] leading-relaxed text-subtle">
-        Instagram puede pedir inicio de sesión. Los vídeos se abren siempre en la publicación
-        original para respetar al creador.
-      </p>
     </section>
   );
 }

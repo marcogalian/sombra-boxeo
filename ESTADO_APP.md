@@ -1,6 +1,6 @@
 # Estado de SOMBRA
 
-Última actualización: 12 de septiembre de 2026.
+Última actualización: 13 de septiembre de 2026.
 
 ## Estado actual
 
@@ -10,6 +10,8 @@ La aplicación está lista para probar. Está orientada a móvil y permite apren
 
 - Escuela ordenada de 20 lecciones, desde postura y guardia hasta combinaciones, defensa y rounds de sombra.
 - Videoteca filtrable por Guardia, Piernas, Golpes, Esquivas, Rapidez y En forma.
+- Siete Reels reales de Instagram reproducibles dentro de la videoteca, colocados antes de las guías antiguas.
+- Acceso destacado **“NUEVO · 7 REELS”** en la pantalla de inicio.
 - Demostraciones visuales y explicaciones dentro de las lecciones.
 - Ejercicios relacionados para pasar directamente de aprender a practicar.
 - Entrenamiento específico de rapidez técnica.
@@ -18,7 +20,7 @@ La aplicación está lista para probar. Está orientada a móvil y permite apren
 
 ## Reels de Instagram seleccionados
 
-Los vídeos se abren en la publicación original del entrenador. Cada tarjeta de la aplicación indica el nivel, qué observar y cómo practicarlo.
+Los vídeos se reproducen dentro de la aplicación y también incluyen un enlace a la publicación original del entrenador. Cada tarjeta indica el nivel, qué observar y cómo practicarlo.
 
 1. Jab y regreso a la guardia — @franksnobleart  
    https://www.instagram.com/franksnobleart/reel/Daxl27sNiEZ/
@@ -42,7 +44,7 @@ Los vídeos se abren en la publicación original del entrenador. Cada tarjeta de
 - Renderizado revisado en móvil y ordenador.
 - Sin desbordamiento horizontal en móvil.
 - Filtros de la videoteca comprobados.
-- Autores, descripciones y enlaces originales de los Reels comprobados.
+- Autores, descripciones, reproductores integrados y enlaces originales de los Reels comprobados.
 - Tarjeta para compartir e icono de la aplicación presentes.
 
 El entorno de revisión bloquea el script externo de la vista previa de la plataforma. No se encontraron errores propios de la aplicación.
@@ -55,4 +57,3 @@ El entorno de revisión bloquea el script externo de la vista previa de la plata
 4. Iniciar el entrenamiento de rapidez, pausar y continuar el cronómetro.
 5. Revisar el plan de seis semanas.
 6. Marcar una lección como terminada, recargar la aplicación y confirmar que el progreso permanece.
-
