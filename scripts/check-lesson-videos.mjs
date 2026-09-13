@@ -33,7 +33,8 @@ try {
       await section.waitFor();
       const clips = LESSON_CLIPS[id];
       assert.ok(clips?.length, `No clips for ${id}`);
-      assert.equal(await page.locator("iframe").count(), 0);
+      // Netlify adds its own badge iframe outside the app in production.
+      assert.equal(await page.locator("main iframe").count(), 0);
       assert.equal(await page.locator("video").count(), clips.length);
       for (let index = 0; index < clips.length; index++) {
         const clip = clips[index];
